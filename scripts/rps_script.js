@@ -43,8 +43,34 @@ function playRound (playerSelection, computerSelection) {
     }
 }
 
+function getPlayerChoice () {
+    let i = true
+    while (i) {
+        let playerChoice = prompt("Enter your choice (rock, paper or scissors) or type 'exit' to finish the game");
+        playerChoice = playerChoice.toLowerCase();
+        // console.log(playerChoice);
+        if ((playerChoice == 'paper') || (playerChoice == 'rock') || (playerChoice == 'scissors')) {
+            return playerChoice;
+        } else if (playerChoice == 'exit') {
+            i = false;
+        };
+        console.log("Wrong input, please try again");
+    };
+    return 'exit';
+}
 
-let playerSelection = 'paper';
-let computerSelection = getComputerChoice();
-console.log(computerSelection);
-console.log(playRound(playerSelection, computerSelection));
+function game () {
+    let j = true;
+    while (j) {
+        let playerSelection = getPlayerChoice();
+        let computerSelection = getComputerChoice();
+        if (playerSelection == 'exit') {
+            j = false;
+        } else {
+            console.log("Computer's choice: " + computerSelection);
+            console.log(playRound(playerSelection, computerSelection));
+        }
+    };
+};
+
+game();
