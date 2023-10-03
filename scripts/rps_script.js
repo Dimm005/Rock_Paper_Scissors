@@ -82,12 +82,15 @@ function playRound (choiceId) {
     const choiceBtn = document.querySelectorAll(".choice_btn");
 
 function game() {
-    let playerScore = 0;
-    let computerScore = 0;
+
 
     choiceBtn.forEach((button) => {
+        let playerScore = 0;
+        let computerScore = 0;
+
         button.addEventListener("click", () => {
             let roundResult = playRound(button.id);
+            gameOver.textContent = "";
 
             switch (roundResult) {
                 case 1:
@@ -98,6 +101,8 @@ function game() {
                     computerScore++;
                     round.textContent = "You lose the round!";
                     break;
+                default:
+                    round.textContent = "Draw!";
             };
 
             playerScoreSpan.textContent = playerScore;
