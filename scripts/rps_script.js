@@ -1,3 +1,5 @@
+(game())
+
 function getComputerChoice () {
     let intChoice = Math.floor(Math.random() * 3);
     switch (intChoice) {
@@ -32,6 +34,10 @@ function getPlayerChoice (choiceId) {
 }
 
 function playRound (choiceId) {
+
+    const playerChoiceDiv = document.querySelector("#player_choice");
+    const computerChoiceDiv = document.querySelector("#computer_choice");
+
     let playerSelection = getPlayerChoice(choiceId);
     let computerSelection = getComputerChoice();
 
@@ -69,22 +75,20 @@ function playRound (choiceId) {
 
 
 
+function game() {
+
     const mainBlock = document.querySelector('main');
     const round = document.querySelector("#round_result");
-    const playerChoiceDiv = document.querySelector("#player_choice");
-    const computerChoiceDiv = document.querySelector("#computer_choice");
     const playerScoreSpan = document.querySelector("#player_total span");
     const computerScoreSpan = document.querySelector("#computer_total span");
-
+    const choiceBtn = document.querySelectorAll(".choice_btn");
     const gameOver = document.createElement("div");
     gameOver.id = "game_over";
 
-    const choiceBtn = document.querySelectorAll(".choice_btn");
+    let playerScore = 0;
+    let computerScore = 0;
 
-function game() {
     choiceBtn.forEach((button) => {
-        let playerScore = 0;
-        let computerScore = 0;
 
         button.addEventListener("click", () => {
             let roundResult = playRound(button.id);
@@ -111,7 +115,6 @@ function game() {
                 mainBlock.appendChild(gameOver);
                 playerScore = 0;
                 computerScore = 0;
-            
                 return;
             };
             if (computerScore == 5) {
@@ -119,13 +122,13 @@ function game() {
                 mainBlock.appendChild(gameOver);
                 playerScore = 0;
                 computerScore = 0;
-            
                 return;
             };
         });
     });
+
 };
 
-game();
+
 
 
