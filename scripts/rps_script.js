@@ -82,8 +82,6 @@ function playRound (choiceId) {
     const choiceBtn = document.querySelectorAll(".choice_btn");
 
 function game() {
-
-
     choiceBtn.forEach((button) => {
         let playerScore = 0;
         let computerScore = 0;
